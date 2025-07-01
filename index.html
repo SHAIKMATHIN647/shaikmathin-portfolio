@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --text-color: #f1f5f9;
+      --primary-color: #38bdf8;
+      --secondary-bg: #1e293b;
+      --card-bg: #1e293b;
+      --input-bg: #334155;
+    }
+
+    body.light-theme {
+      --bg-color: #ffffff;
+      --text-color: #111827;
+      --primary-color: #2563eb;
+      --secondary-bg: #f3f4f6;
+      --card-bg: #e5e7eb;
+      --input-bg: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    header {
+      background: var(--secondary-bg);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .hero {
+      text-align: center;
+      padding-top: 5rem;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: var(--text-color);
+    }
+
+    .btn {
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary-color);
+      color: var(--bg-color);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0ea5e9;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 2rem;
+    }
+
+    .skill {
+      background: var(--card-bg);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      color: var(--primary-color);
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 2rem;
+    }
+
+    .project {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      background-color: var(--input-bg);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    input, textarea {
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: none;
+      background: var(--input-bg);
+      color: var(--text-color);
+    }
+
+    footer {
+      background: var(--secondary-bg);
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .socials a {
+      margin: 0 10px;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    /* Theme Toggle Switch */
+    .theme-switch {
+      position: relative;
+      display: inline-block;
+      width: 48px;
+      height: 24px;
+      margin-left: 20px;
+    }
+
+    .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    .theme-switch input:checked + .slider {
+      background-color: var(--primary-color);
+    }
+
+    .theme-switch input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Shaik Mathin</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href ="https://github.com/SHAIKMATHIN647">Github</a>
+      <!-- <a href ="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile">Linkedin</a> -->
+    </nav>
+    <label class="theme-switch">
+      <input type="checkbox" id="themeToggle">
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <section class="hero">
+    <h2>Hello, I'm Shaik Mathin</h2>
+    <p>Frontend Developer & Passionate Software Engineer</p>
+    <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+  </section>
+
+  <section id="about">
+  <h2>About Me</h2>
+  <p style="margin-top: 1rem;">
+Aspiring Software Engineer with a solid foundation in computer science and practical experience through
+personal and academic projects. Skilled in developing efficient, scalable software solutions and passionate
+about solving real-world problems. Eager to contribute to innovative development teams and grow in a fast-paced
+ tech environment.
+  </p>
+</section>
+
+
+<section id="skills">
+  <h2>Skills</h2>
+
+  <!-- Programming Languages -->
+  <div class="skills-category">
+    <h3>Languages</h3>
+    <div class="skills">
+      <div class="skill">C</div>
+      <div class="skill">Java</div>
+      <div class="skill">Python</div>
+    </div>
+  </div>
+
+  <!-- Frontend Skills -->
+  <div class="skills-category">
+    <h3>Frontend</h3>
+    <div class="skills">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">Bootstrap</div>
+      <div class="skill">React JS</div>
+    </div>
+  </div>
+
+  <!-- Backend Skills -->
+  <div class="skills-category">
+    <h3>Backend</h3>
+    <div class="skills">
+      <div class="skill">PHP</div>
+      <div class="skill">MySQL</div>
+      <div class="skill">MongoDB</div>
+      <div class="skill">Node JS</div>
+    </div>
+  </div>
+
+  <!-- Tools & Technologies -->
+  <div class="skills-category">
+    <h3>Tools & Technologies</h3>
+    <div class="skills">
+      <div class="skill">Git</div>
+      <div class="skill">GitHub</div>
+      <div class="skill">VS Code</div>
+      <div class="skill">IntelliJ IDEA</div>
+      <div class="skill">XAMPP</div>
+    </div>
+
+     <div class="skills-category">
+    <h3>Cloud</h3>
+    <div class="skills">
+      <div class="skill">AWS</div>
+      
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <h2>Certifications</h2>
+  <div class="projects">
+
+    <div class="project">
+      <img src="java.png" alt="Java Certification" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+      <h3>Java Programming – Basics to OOP</h3>
+      <p>Completed Java course focusing on object-oriented programming, data structures, and algorithms.</p>
+    </div>
+
+    <div class="project">
+      <img src="aws.png" alt="AWS Certification" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+      <h3>AWS Academy Cloud Foundations</h3>
+      <p>Earned from AWS Academy. Learned fundamentals of cloud computing, core AWS services, and deployment strategies.</p>
+    </div>
+
+    <div class="project">
+      <img src="sql.png" alt="SQL Certification" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+      <h3>SQL – HackerRank</h3>
+      <p>Certified in SQL basics covering SELECT statements, joins, subqueries, and aggregations.</p>
+    </div>
+
+    
+
+  </div>
+</section>
+
+<section id="projects">
+  <h2>My Projects</h2>
+  <div class="projects">
+    <div class="project">
+  <img src="github.png" alt="Weather-Based Crop Recommendation System" style="width:100%; height:auto;">
+  <h3>Weather-Based Crop Recommendation System</h3>
+  <p>Developed using PHP and JavaScript, it integrates weather APIs to provide farmers with data-driven crop advisory tailored to their region.</p>
+  <a href="https://github.com/SHAIKMATHIN647/Weather-based-crop-advisory-system-" target="_blank">GitHub</a>
+</div>
+
+    <div class="project">
+  <img src="github.png" alt="CodeChronicle Project" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+  <h3>CodeChronicle Blog</h3>
+  <p>A dynamic blog application developed using HTML, CSS,Java Script, and PHP. Includes features like post creation and edit the post and admin authentication</p>
+  <a href="https://github.com/SHAIKMATHIN647/codechronicle" target="_blank">GitHub</a>
+</div>
+
+
+    <div class="project">
+      <img src="github.png" alt="CampusConnect" style="width:100%; height:auto;">
+      <h3>CampusConnect</h3>
+      <p>CampusConnect is a dynamic college community portal Students can explore upcoming events, while club organizers and admins manage the events from a responsive dashboard.</p>
+      <a href="https://about.google/">Github</a>
+    </div>
+
+    
+
+  </div>
+</section>
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form class="contact-form" action="https://formsubmit.co/el/gudixe" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New message from your portfolio!">
+    <input type="text" name="_honey" style="display:none">
+
+ 
+    <input type="hidden" name="_next" value="thank-you.html">
+
+    <button class="btn" type="submit">Send Message</button>
+  </form>
+</section>
+
+
+
+
+  <footer>
+    <p>Connect with me:</p>
+    <div class="socials">
+      <a href="https://github.com/SHAIKMATHIN647">GitHub</a>
+      <a href="https://www.linkedin.com/in/shaik-mathin-9671462a5/">LinkedIn</a>
+      <a href="#">Twitter</a>
+    </div>
+    <p style="margin-top: 1rem;">©  Shaik Mathin. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    toggle.addEventListener('change', () => {
+      body.classList.toggle('light-theme');
+      localStorage.setItem('theme', body.classList.contains('light-theme') ? 'light' : 'dark');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        body.classList.add('light-theme');
+        toggle.checked = true;
+      }
+    });
+  </script>
+
+</body>
+</html>
